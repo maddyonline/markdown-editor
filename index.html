@@ -19,7 +19,7 @@
     }
     #in, .CodeMirror{
       position: fixed;
-      top: 0;
+      top: 2.5em;
       left: 0;
       bottom: 0;
       width: 50%;
@@ -34,7 +34,7 @@
 
     #out{
       position: fixed;
-      top: 0;
+      top: 2.5em;
       right: 0;
       left: 50%;
       bottom: 0;
@@ -112,6 +112,9 @@
   </style>
 </head>
 <body>
+  <div id="navbar">
+    <div> <input type="Button" id="saveButton" value="Save"> </div>
+  </div>
   <div id="in"><form><textarea id="code"># (GitHub-Flavored) Markdown Editor
 
 Basic useful feature list:
@@ -231,6 +234,10 @@ the inspiration to this, and some handy implementation hints, came.
         link.dispatchEvent(event);
       }
     }
+    var saveButtonEl = document.getElementById('saveButton');
+    saveButtonEl.addEventListener('click', function() {
+      save();
+    }, false);
 
     document.addEventListener('keydown', function(e){
       if(e.keyCode == 83 && (e.ctrlKey || e.metaKey)){
